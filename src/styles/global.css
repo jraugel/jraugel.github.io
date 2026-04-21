@@ -140,7 +140,15 @@ p {
 .sidebar .role {
   color: var(--muted);
   font-size: 15px;
-  margin: 0 0 2px;
+  margin: 0 0 6px;
+}
+
+.sidebar .tagline {
+  color: var(--fg);
+  font-size: 14px;
+  font-style: italic;
+  margin: 0 0 8px;
+  line-height: 1.4;
 }
 
 .sidebar .affil {
