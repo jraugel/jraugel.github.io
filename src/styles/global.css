@@ -146,7 +146,6 @@ p {
 .sidebar .tagline {
   color: var(--fg);
   font-size: 14px;
-  font-style: italic;
   margin: 0 0 8px;
   line-height: 1.4;
 }
