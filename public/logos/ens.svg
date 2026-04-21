@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60" role="img" aria-label="École Normale Supérieure">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60" role="img" aria-label="ï¿½cole Normale Supï¿½rieure">
   <style>
     .ens-t1 { font: 700 18px "Playfair Display", Georgia, serif; fill: #111; letter-spacing: 0.04em; }
     .ens-t2 { font: 500 10px "Inter", sans-serif; fill: #555; letter-spacing: 0.14em; text-transform: uppercase; }
@@ -6,5 +6,5 @@
   </style>
   <rect class="ens-bar" x="0" y="16" width="4" height="28"/>
   <text class="ens-t1" x="14" y="28">ENS</text>
-  <text class="ens-t2" x="14" y="44">École Normale Supérieure</text>
+  <text class="ens-t2" x="14" y="44">ï¿½cole Normale Supï¿½rieure</text>
 </svg>

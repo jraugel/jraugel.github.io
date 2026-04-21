@@ -107,6 +107,27 @@ p {
     gap: 32px;
     padding: 32px 20px 60px;
   }
+  .sidebar {
+    position: static; /* disable sticky on mobile */
+    top: auto;
+  }
+  .sidebar .photo {
+    max-width: 220px;
+    margin: 0 auto;
+  }
+  .sidebar .name,
+  .sidebar .role,
+  .sidebar .tagline,
+  .sidebar .affil {
+    text-align: center;
+  }
+  .sidebar .logos,
+  .sidebar .socials {
+    justify-content: center;
+  }
+  .sidebar nav.side-nav {
+    align-items: center;
+  }
 }
 
 /* ─────────── SIDEBAR ─────────── */
