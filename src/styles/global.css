@@ -101,34 +101,7 @@ p {
   align-items: start;
 }
 
-@media (max-width: 900px) {
-  .page {
-    grid-template-columns: 1fr;
-    gap: 32px;
-    padding: 32px 20px 60px;
-  }
-  .sidebar {
-    position: static; /* disable sticky on mobile */
-    top: auto;
-  }
-  .sidebar .photo {
-    max-width: 220px;
-    margin: 0 auto;
-  }
-  .sidebar .name,
-  .sidebar .role,
-  .sidebar .tagline,
-  .sidebar .affil {
-    text-align: center;
-  }
-  .sidebar .logos,
-  .sidebar .socials {
-    justify-content: center;
-  }
-  .sidebar nav.side-nav {
-    align-items: center;
-  }
-}
+/* mobile overrides live further down, after the sidebar rules */
 
 /* ─────────── SIDEBAR ─────────── */
 .sidebar {
@@ -235,6 +208,36 @@ p {
 }
 .sidebar nav.side-nav a:hover {
   color: var(--fg);
+}
+
+/* ─────────── MOBILE OVERRIDES (must come AFTER desktop .sidebar rules) ─── */
+@media (max-width: 900px) {
+  .page {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 32px 20px 60px;
+  }
+  .sidebar {
+    position: static !important; /* disable sticky on mobile */
+    top: auto !important;
+  }
+  .sidebar .photo {
+    max-width: 220px;
+    margin: 0 auto;
+  }
+  .sidebar .name,
+  .sidebar .role,
+  .sidebar .tagline,
+  .sidebar .affil {
+    text-align: center;
+  }
+  .sidebar .logos,
+  .sidebar .socials {
+    justify-content: center;
+  }
+  .sidebar nav.side-nav {
+    align-items: center;
+  }
 }
 
 /* ─────────── MAIN ─────────── */
