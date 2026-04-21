@@ -1,0 +1,343 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Sidebar from "../components/Sidebar.astro";
+import PaperCard from "../components/PaperCard.astro";
+
+// Bold the user's own name.
+const ME = "<strong>Joséphine Raugel</strong>";
+
+// ── Papers, most-recent first ───────────────────────────────────────────
+const papers = [
+  {
+    chip: "2026 · Preprint",
+    title: "Neuralset: a high-performing Python package for Neuro-AI",
+    authorsHtml:
+      `Jean-Rémi King, Corentin Bel, Linnea Evanson, Julien Gadonneix, ` +
+      `Sophia Houhamdi, Jarod Lévy, ${ME}, Andrea Santos Revilla, ` +
+      `Mingfang Zhang, Julie Bonnaire, Charlotte Caucheteux, ` +
+      `Alexandre Défossez, Théo Desbordes, Pablo Diego-Simón, Shubh Khanna, ` +
+      `Juliette Millet, Pierre Orhan, Saarang Panchavati, Antoine Ratouchniak, ` +
+      `Alexis Thual, Teon L. Brooks, Katelyn Begany, Yohann Benchetrit, ` +
+      `Marlène Careil, Hubert Banville, Stéphane d'Ascoli, Simon Dahan, Jérémy Rapin`,
+    venue: "FAIR · Meta AI · 2026",
+    summary:
+      "Neuralset is a unified Python package and benchmark for neuro-AI: it standardises datasets, metrics, and baselines so deep-learning models can be directly compared on how well they predict neural activity.",
+    links: [
+      { label: "Paper", href: "https://kingjr.github.io/files/neuralset.pdf" },
+      {
+        label: "Project page",
+        href: "https://facebookresearch.github.io/neuroai/neuralset/index.html",
+      },
+      {
+        label: "Tweet thread",
+        href: "https://x.com/JeanRemiKing/status/2046564223417811217",
+      },
+    ],
+    media: {
+      type: "video" as const,
+      src: "/media/papers/neuralset.mp4",
+    },
+  },
+  {
+    chip: "2026 · Preprint",
+    title: "TRIBEv2 — scaling brain encoding across subjects and modalities",
+    authorsHtml:
+      `Stéphane d'Ascoli, Jérémy Rapin, Yohann Benchetrit, Hubert Banville, ` +
+      `${ME}, Jean-Rémi King`,
+    venue: "FAIR · Meta AI · 2026",
+    summary:
+      "TRIBEv2 extends the TRIBE framework to jointly model fMRI responses across subjects, tasks, and modalities, producing a single foundation brain encoder that transfers across datasets.",
+    links: [
+      {
+        label: "Paper",
+        href: "https://scontent-lhr8-1.xx.fbcdn.net/v/t39.2365-6/657045057_4517522795185706_3804826277082824742_n.pdf?_nc_cat=107&ccb=1-7&_nc_sid=3c67a6&_nc_ohc=DFVXTrOxM_cQ7kNvwGexI1_&_nc_oc=Adpp-Lq20c7JJQyB99M9G5j1lxBHwuzJ7UB-swMKKKA25zzIoc2OnXZ5QInlniVlo9k2OQv87WZfevBkpGAhbaAL&_nc_zt=14&_nc_ht=scontent-lhr8-1.xx&_nc_gid=4CWiUQ5uWvxZ8hqPtgTIRQ&_nc_ss=7a389&oh=00_Af0pMvsrT6Oz-TbWfHeDV0p82hVdAq8ytUN0yybKeVa8VQ&oe=69ED8EF2",
+      },
+      {
+        label: "Code",
+        href: "https://github.com/facebookresearch/tribev2",
+      },
+      {
+        label: "Demo",
+        href: "https://aidemos.atmeta.com/tribev2/",
+      },
+      {
+        label: "Huggingface",
+        href: "https://huggingface.co/facebook/tribev2",
+      },
+      {
+        label: "Tweet thread",
+        href: "https://x.com/stephanedascoli/status/2037159637976318338",
+      },
+    ],
+    media: {
+      type: "video" as const,
+      src: "/media/papers/tribev2.mp4",
+    },
+  },
+  {
+    chip: "ICLR 2026",
+    title:
+      "Disentangling the Factors of Convergence between Brains and DINOv3",
+    authorsHtml:
+      `${ME}, Marc Szafraniec, Huy V. Vo, Camille Couprie, Jérémy Rapin, ` +
+      `Stéphane d'Ascoli, Patrick Labatut, Piotr Bojanowski, Valentin Wyart, Jean-Rémi King`,
+    venue: "arXiv:2508.18226 · 2025",
+    summary:
+      "We analyse when and why self-supervised vision models (DINOv3) align with human visual cortex responses, disentangling effects of scale, data, objective, and architecture on brain similarity.",
+    links: [
+      {
+        label: "Paper",
+        href: "https://arxiv.org/abs/2508.18226",
+      },
+      {
+        label: "Tweet thread",
+        href: "https://x.com/JeanRemiKing/status/1962453435199983982",
+      },
+    ],
+    media: {
+      type: "image" as const,
+      src: "/media/papers/dinov3-brain.gif",
+      alt: "DINOv3 × Brain alignment animation",
+    },
+  },
+  {
+    chip: "Spotlight · NeurIPS 2025",
+    title:
+      "Scaling and context steer LLMs along the same computational path as the human brain",
+    authorsHtml:
+      `${ME}, Stéphane d'Ascoli, Jérémy Rapin, Valentin Wyart, Jean-Rémi King`,
+    venue: "arXiv:2512.01591 · 2025",
+    summary:
+      "Across a wide range of LLMs, scaling and in-context conditioning push model representations along a trajectory that matches how the human brain processes the same inputs — suggesting a shared computational axis between LLMs and cortex.",
+    links: [
+      {
+        label: "Paper",
+        href: "https://arxiv.org/abs/2512.01591",
+      },
+      {
+        label: "Tweet thread",
+        href: "https://x.com/JeanRemiKing/status/1996131891129246038",
+      },
+    ],
+    media: {
+      type: "video" as const,
+      src: "/media/papers/Scaling_and_context_LLMs.mp4",
+      note: "Save video as public/media/papers/Scaling_and_context_LLMs.mp4",
+    },
+  },
+  {
+    chip: "CCN 2024",
+    title:
+      "Decoding of hierarchical inference in the human brain during speech processing with large language models",
+    authorsHtml: `${ME}, Valentin Wyart, Jean-Rémi King`,
+    venue: "CCN · 2024",
+    summary:
+      "Using MEG recordings of subjects listening to continuous speech, we decode a hierarchy of linguistic inferences (phonemes → words → syntax → meaning) from cortical activity, aligned with successive layers of large language models.",
+    links: [
+      {
+        label: "Paper",
+        href: "https://2024.ccneuro.org/pdf/483_Paper_authored_CCN_abstract_final.pdf",
+      },
+    ],
+    media: {
+      type: "image" as const,
+      src: "/media/papers/hierarchical-inference.png",
+      alt: "Hierarchical inference decoding figure",
+    },
+  },
+];
+
+// ── Talks & workshops (no author shown) ────────────────────────────────
+// thumb-video: clicking the image opens a modal that plays the video inline.
+const talks = [
+  {
+    chip: "2025 · Workshop",
+    title: "Generative AI workshop – Brain to Machine",
+    venue: "Workshop · GenAI",
+    summary:
+      "Workshop on generative AI and its connections to brain-inspired modelling. Discussion of how foundation models can be used as computational probes of biological intelligence.",
+    links: [
+      {
+        label: "Workshop site",
+        href: "https://genai-conference-website.vercel.app/",
+      },
+    ],
+    media: {
+      type: "image" as const,
+      src: "/media/talks/workshop.png",
+      alt: "GenAI workshop",
+      note: "Save workshop image as public/media/talks/workshop.png",
+    },
+  },
+  {
+    chip: "2025 · Conference",
+    title: "Invited talk — Montreal AI & Neuroscience (MAIN)",
+    venue: "MAIN · Montréal",
+    summary:
+      "Talk at the Montréal AI & Neuroscience Conference on aligning large models with brain activity and what it reveals about representations in both systems.",
+    links: [
+      {
+        label: "MAIN conference",
+        href: "https://www.main2025.org/",
+      },
+    ],
+    media: {
+      type: "thumb-video" as const,
+      src: "/media/talks/main.png",
+      alt: "MAIN conference talk thumbnail",
+      videoHref: "https://www.youtube.com/watch?v=3XpDRy3MbjU",
+    },
+  },
+  {
+    chip: "2025 · NeurIPS",
+    title: "NeurIPS 2025 — DINOv3 and the DINO × Brain paper",
+    venue: "NeurIPS · 2025",
+    summary:
+      "Talk at NeurIPS 2025 presenting DINOv3 and the DINO × Brain paper: a study of why and when large vision foundation models align with human visual cortex.",
+    links: [],
+    media: {
+      type: "thumb-video" as const,
+      src: "/media/talks/dino_neurips.png",
+      alt: "NeurIPS DINOv3 × Brain talk thumbnail",
+      videoHref:
+        "https://next.frame.io/share/2878ed20-48ea-43d9-8f82-4a21807938a5/view/579b34d6-bcb2-4326-a04d-ac6bc10ebfa7",
+    },
+  },
+  {
+    chip: "2024 · CCN Conference",
+    title: "Talk at CCN — Cognitive Computational Neuroscience",
+    venue: "CCN",
+    summary:
+      "Contributed talk at CCN on decoding hierarchical inference in the human brain during speech processing, using large language models as computational probes.",
+    links: [],
+    media: {
+      type: "thumb-video" as const,
+      src: "/media/talks/ccn.png",
+      alt: "CCN talk thumbnail",
+      videoHref: "https://www.youtube.com/watch?v=qUHYZCT8I5w",
+    },
+  },
+];
+---
+
+<Layout>
+  <div class="page">
+    <Sidebar />
+
+    <main class="main">
+      <!-- ─────────── BIO ─────────── -->
+      <section id="bio" class="bio">
+        <p>
+          Hi, I'm a PhD student at Meta and ENS, in Paris.
+          My work focuses on two main fields:
+        </p>
+        <ul>
+          <li>
+            Building AI models to decode neural activity, and eventually
+            helping people with speech difficulties to find their voice again.
+          </li>
+          <li>
+            Exploring the similarities and differences between large models
+            (LLMs and vision) and the human brain. And using these to:
+            <ul>
+              <li>Better understand the brain</li>
+              <li>
+                Build better, more efficient AI models — the brain is the most
+                optimal system we know so far, it must be doing something right.
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <p class="advisors">
+          My advisors are <a
+            href="https://kingjr.github.io/"
+            target="_blank"
+            rel="noopener">Jean-Rémi King</a
+          > (Brain & AI team, Meta AI) and <a
+            href="https://scholar.google.com/citations?hl=fr&user=gN_DidAAAAAJ&view_op=list_works&sortby=pubdate"
+            target="_blank"
+            rel="noopener">Valentin Wyart</a
+          > (LNC2, ENS).
+        </p>
+      </section>
+
+      <!-- ─────────── PAPERS ─────────── -->
+      <section id="papers" class="section">
+        <h2>Papers</h2>
+        {papers.map((p) => <PaperCard {...p} />)}
+      </section>
+
+      <!-- ─────────── TALKS ─────────── -->
+      <section id="talks" class="section">
+        <h2>Workshops & Talks</h2>
+        {talks.map((t) => <PaperCard {...t} />)}
+      </section>
+
+      <!-- ─────────── INDUSTRY ─────────── -->
+      <section id="industry" class="section">
+        <h2>Internal work in industry</h2>
+        <p>
+          I currently collaborate with other teams at Meta, working towards
+          more <strong>interpretable</strong> models through neuro-inspired methods.
+        </p>
+        <p>
+          Before, I developed a model to predict the positive impact of
+          <strong>neurofeedback</strong> on subjects based on their physiological
+          data, for MBT, a neurotech startup.
+        </p>
+      </section>
+
+      <!-- ─────────── AI & ARTS ─────────── -->
+      <section id="arts" class="section">
+        <h2>AI & Arts</h2>
+        <div class="media-text-row">
+          <video
+            src="/media/arts/persona.mp4"
+            autoplay
+            loop
+            muted
+            playsinline></video>
+          <div>
+            <p>
+              During an exhibition about AI and Arts, we developed <strong
+                >PERSONA</strong
+              >: an RL model that adapts in real time, learning to communicate
+              with humans through facial expressions.
+            </p>
+            <p>
+              <a
+                href="https://github.com/BRomans/PERSONA/blob/main/README.md"
+                target="_blank"
+                rel="noopener">Github repo</a
+              >
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <footer class="site-foot">
+        <div>© {new Date().getFullYear()} Joséphine Raugel</div>
+        <div>Built with Astro · Hosted on GitHub Pages</div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- ─────────── VIDEO MODAL (shared) ─────────── -->
+  <div
+    id="vmodal"
+    class="vmodal"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Video player"
+  >
+    <div class="vmodal-inner">
+      <button
+        id="vmodal-close"
+        class="vmodal-close"
+        type="button"
+        aria-label="Close video">×</button
+      >
+      <div id="vmodal-content"></div>
+    </div>
+  </div>
+</Layout>

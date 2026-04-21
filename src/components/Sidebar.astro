@@ -1,0 +1,49 @@
+---
+// Sidebar with photo, name, role, Meta/ENS logos, and social links.
+const email = "josephine.raugel@gmail.com";
+const twitter = "https://x.com/JRaugel";
+const linkedin =
+  "https://www.linkedin.com/in/jos%C3%A9phine-raugel-738283134/";
+const scholar =
+  "https://scholar.google.com/citations?user=tnWAl_gAAAAJ&hl=en";
+---
+
+<aside class="sidebar">
+  <img class="photo" src="/profile.jpg" alt="Joséphine Raugel" />
+
+  <h1 class="name">Joséphine Raugel</h1>
+  <p class="role">PhD student · Brain × AI</p>
+  <p class="affil">Meta AI · ENS · Paris</p>
+
+  <div class="logos" aria-label="Affiliations">
+    <img src="/logos/meta.png" alt="Meta" />
+    <img src="/logos/ens.png" alt="ENS" />
+  </div>
+
+  <div class="socials" aria-label="Contact">
+    <a href={`mailto:${email}`} title="Email" aria-label="Email">
+      <!-- envelope -->
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+    </a>
+    <a href={scholar} target="_blank" rel="noopener" title="Google Scholar" aria-label="Google Scholar">
+      <!-- graduation cap -->
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg>
+    </a>
+    <a href={twitter} target="_blank" rel="noopener" title="X (Twitter)" aria-label="X">
+      <!-- X logo -->
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21.5l-7.5 8.572L23 22h-6.828l-5.347-6.994L4.62 22H1.36l8.02-9.164L1 2h6.914l4.833 6.394L18.244 2Zm-1.197 18h1.86L7.03 4H5.055l11.992 16Z"/></svg>
+    </a>
+    <a href={linkedin} target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
+      <!-- LinkedIn -->
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5.001 2.5 2.5 0 0 1 0-5Zm.02 6.5H2v12h3V10Zm4 0h2.88v1.64h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.6V22H14v-5.4c0-1.28-.02-2.94-1.8-2.94-1.8 0-2.08 1.4-2.08 2.84V22H7V10Z"/></svg>
+    </a>
+  </div>
+
+  <nav class="side-nav">
+    <a href="#bio">About</a>
+    <a href="#papers">Papers</a>
+    <a href="#talks">Workshops & Talks</a>
+    <a href="#industry">Industry</a>
+    <a href="#arts">AI & Arts</a>
+  </nav>
+</aside>

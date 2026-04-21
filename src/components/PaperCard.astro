@@ -1,0 +1,120 @@
+---
+// Card for a paper OR a talk.
+//
+// Media types:
+//   "video"       — autoplay looping MP4/GIF-as-MP4 (for papers)
+//   "image"       — a still image (for papers)
+//   "thumb-video" — a clickable image that opens a modal with the real video
+//                   (for talks — YouTube, frame.io, etc.)
+//   "placeholder" — grey dashed box with a note
+//
+// The `authors` field is optional: talks usually don't show one.
+// `authorsHtml` lets callers pass pre-rendered markup (e.g. <strong> wrap).
+
+interface Link {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  chip?: string;
+  title: string;
+  authorsHtml?: string; // HTML allowed — used for <strong> on Joséphine
+  venue?: string;
+  summary: string;
+  links?: Link[];
+  media?: {
+    type: "video" | "image" | "thumb-video" | "placeholder";
+    src?: string;
+    poster?: string;
+    alt?: string;
+    videoHref?: string; // for thumb-video: where the modal plays from
+    note?: string;
+  };
+}
+
+const {
+  chip,
+  title,
+  authorsHtml,
+  venue,
+  summary,
+  links = [],
+  media,
+} = Astro.props;
+---
+
+<article class="pub-row">
+  <div class="pub-illustration">
+    {
+      media?.type === "video" && media.src && (
+        <video
+          src={media.src}
+          poster={media.poster}
+          autoplay
+          loop
+          muted
+          playsinline
+          data-fallback={media.note ?? "Video not found — see ASSETS.md"}
+        />
+      )
+    }
+    {
+      media?.type === "image" && media.src && (
+        <img
+          src={media.src}
+          alt={media.alt ?? title}
+          data-fallback={media.note ?? "Image not found — see ASSETS.md"}
+        />
+      )
+    }
+    {
+      media?.type === "thumb-video" && media.src && media.videoHref && (
+        <button
+          class="thumb-btn"
+          type="button"
+          data-video-href={media.videoHref}
+          aria-label={`Play video: ${title}`}
+        >
+          <img
+            src={media.src}
+            alt={media.alt ?? title}
+            data-fallback={media.note ?? "Thumbnail missing"}
+          />
+          <span class="play-badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </span>
+        </button>
+      )
+    }
+    {
+      (!media || media.type === "placeholder") && (
+        <div class="media-placeholder">
+          {media?.note ??
+            "Drop video/gif into public/media/papers/ — see ASSETS.md"}
+        </div>
+      )
+    }
+  </div>
+
+  <div class="pub-body">
+    {chip && <span class="chip">{chip}</span>}
+    <h3>{title}</h3>
+    {authorsHtml && <p class="authors" set:html={authorsHtml} />}
+    {venue && <p class="venue">{venue}</p>}
+    <p class="summary">{summary}</p>
+    {
+      links.length > 0 && (
+        <div class="links">
+          {links.map((l) => (
+            <a class="ghost" href={l.href} target="_blank" rel="noopener">
+              {l.label}
+            </a>
+          ))}
+        </div>
+      )
+    }
+  </div>
+</article>
